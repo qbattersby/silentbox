@@ -12,6 +12,7 @@
             :src="getEmbedUrl"
             frameborder="0"
             allowfullscreen
+            allow="autoplay"
           ></iframe>
           <img
             class="silentbox-overlay__image"
