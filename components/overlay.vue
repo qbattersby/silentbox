@@ -22,7 +22,6 @@
             v-if="image"
           >
           <video width="70%" height="auto" :src="getEmbedUrl" v-if="video" controls></video>
-          <audio v-if="audio" :src="getEmbedUrl" controls></audio>
         </div>
         <p
           id="silentbox-overlay__description"
@@ -65,18 +64,15 @@ export default {
   name: "SilentboxOverlay",
   computed: {
     youtubeVideo() {
-      return this.$parent.embedUrl.includes("youtube.com");
+      return this.$parent.embedUrl.includes("video.oracle.com");
     },
     image() {
-      return !this.youtubeVideo && !this.video && !this.audio;
+      return !this.youtubeVideo && !this.video;
     },
     video() {
       return /\.(mp4|avi|mkv|wmv|mov|flv)/gim.test(
         this.$parent.embedUrl.toLowerCase()
       );
-    },
-    audio() {
-      return /\.(mp3|wav|ogg)/gim.test(this.$parent.embedUrl.toLowerCase());
     },
     getEmbedUrl() {
       return this.handleUrl(this.$parent.embedUrl);
